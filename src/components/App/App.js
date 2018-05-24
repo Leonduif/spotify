@@ -20,12 +20,19 @@ class App extends React.Component {
             playlistTracks: [],
             playlistName: ''
         }
+
+        this.addHandler = this.addHandler.bind(this);
+        this.saveHandler = this.saveHandler.bind(this);
     }
 
     addHandler(newTrack) {
         this.setState({
             playlistTracks: this.state.playlistTracks.concat(newTrack)
         });
+    }
+
+    saveHandler(playlistName) {
+        this.setState({ playlistName });
     }
 
     render() {
@@ -36,7 +43,7 @@ class App extends React.Component {
                     <SearchBar />
                     <div className="App-playlist">
                         <SearchResults tracks={this.state.searchResults} onAdd={this.addHandler} />
-                        <Playlist tracks={this.state.playlistTracks} />
+                        <Playlist tracks={this.state.playlistTracks} onSave={this.saveHandler} />
                     </div>
                 </div>
             </div>

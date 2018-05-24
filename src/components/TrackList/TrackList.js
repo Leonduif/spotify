@@ -4,8 +4,9 @@ import './TrackList.css';
 
 class TrackList extends React.Component {
     render() {
+
         const tracks = this.props.tracks.map(track => {
-            return <Track key={track.id} track={track} />;
+            return <Track key={track.id} track={track} isAdding={this.props.isAdding} />;
         });
 
         return (

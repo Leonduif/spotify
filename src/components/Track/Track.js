@@ -4,24 +4,30 @@ import './Track.css';
 class Track extends React.Component {
     constructor(props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
+        this.handleAddClick = this.handleAddClick.bind(this);
+        this.handleRemoveClick = this.handleRemoveClick.bind(this);
     }
 
-    handleClick() {
-        console.log('handle click');
-        const newTrack = {
-            title: this.props.track.title,
-            artist: this.props.track.artist,
-            album: this.props.track.album
-        };
+    handleAddClick() {
+        console.log('handle add click');
+        // const newTrack = {
+        //     title: this.props.track.title,
+        //     artist: this.props.track.artist,
+        //     album: this.props.track.album
+        // };
 
         // this.props.onAdd(newTrack);
+    }
+
+    handleRemoveClick() {
+        console.log('handle remove click');
     }
 
     render() {
         const title  = this.props.track.title;
         const artist = this.props.track.artist;
         const album  = this.props.track.album;
+        const button = this.props.isAdding ? <a className="Track-action" onClick={this.handleAddClick}>+</a> : <a className="Track-action" onClick={this.handleRemoveClick}>-</a>;
 
         return (
             <div className="Track">
@@ -29,7 +35,7 @@ class Track extends React.Component {
                     <h3>{title}</h3>
                     <p>{artist} | {album}</p>
                 </div>
-                <a className="Track-action" onClick={this.handleClick}>+</a>
+                {button}
             </div>
         );
     }
